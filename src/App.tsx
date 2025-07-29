@@ -1,11 +1,26 @@
-import { useReducer, useState } from 'react'
+import { useEffect, useReducer, useState } from 'react'
 import InputField from './components/InputField'
 import TodoList from './components/TodoList'
 import { todoReducer } from './reducers/todoReducer'
+import type { Todo } from './model'
+
+const LOCAL_STORAGE_KEY = 'todos'
 
 const App: React.FC = () => {
-	const [todo, setTodo] = useState<string>('')
-	const [todos, dispatch] = useReducer(todoReducer, [])
+  const [todo, setTodo] = useState<string>('')
+  
+  // Initialize todos from localStorage
+  const initializer = (): Todo[] => {
+    const saved = localStorage.getItem(LOCAL_STORAGE_KEY)
+    return saved ? JSON.parse(saved) : []
+  }
+
+  const [todos, dispatch] = useReducer(todoReducer, [], initializer)
+  
+  // Save todos in localStorage when they change
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos))
+  }, [todos]);
 
 	const handleAdd = (e: React.FormEvent) => {
 		e.preventDefault()
