@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import type { Todo } from '../model'
 import {
-  MdDoneAll,
+	MdDoneAll,
 	MdOutlineDelete,
 	MdOutlineDone,
 	MdOutlineModeEdit,
@@ -40,7 +40,7 @@ const SingleTodo: React.FC<Props> = ({ todo, dispatch }) => {
 	return (
 		<form
 			onSubmit={(e) => handleEdit(e)}
-			className='flex rounded-sm p-4 gap-6 font-sans bg-[url("https://img.freepik.com/free-photo/crumpled-yellow-paper-background-close-up_60487-2390.jpg?size=626&ext=jpg")]'
+			className='flex rounded-sm p-4 gap-6 font-sans bg-[url("https://img.freepik.com/free-photo/crumpled-yellow-paper-background-close-up_60487-2390.jpg?size=626&ext=jpg")] transition hover:scale-[102%] hover:shadow-custom-sm'
 		>
 			{edit ? (
 				<input
@@ -82,8 +82,8 @@ const SingleTodo: React.FC<Props> = ({ todo, dispatch }) => {
 						todo.isDone ? 'text-green-600' : ''
 					}`}
 					onClick={() => handleDone(todo.id)}
-        >
-          {!todo.isDone ? <MdOutlineDone />: <MdDoneAll />}
+				>
+					{!todo.isDone ? <MdOutlineDone /> : <MdDoneAll />}
 				</span>
 			</div>
 		</form>
