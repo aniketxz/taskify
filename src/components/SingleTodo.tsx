@@ -40,20 +40,20 @@ const SingleTodo: React.FC<Props> = ({ todo, dispatch }) => {
 	return (
 		<form
 			onSubmit={(e) => handleEdit(e)}
-			className='flex rounded-sm p-4 gap-6 font-sans bg-[url("https://img.freepik.com/free-photo/crumpled-yellow-paper-background-close-up_60487-2390.jpg?size=626&ext=jpg")] transition hover:scale-[102%] hover:shadow-custom-sm'
+			className='flex rounded-sm p-2 md:p-4 gap-6 font-sans bg-[url("https://img.freepik.com/free-photo/crumpled-yellow-paper-background-close-up_60487-2390.jpg?size=626&ext=jpg")] transition hover:scale-[102%] hover:shadow-custom-sm'
 		>
 			{edit ? (
 				<input
 					ref={inputRef}
 					value={editTodo}
 					onChange={(e) => setEditTodo(e.target.value)}
-					className='flex-1 text-lg p-1 bg-white/30 rounded outline-none'
+					className='flex-1 md:text-lg p-1 bg-white/30 rounded outline-none'
 				></input>
 			) : (
 				<span
-					className={`flex-1 text-lg p-1 ${
+					className={`flex-1 md:text-lg p-1 ${
 						todo.isDone ? 'line-through text-gray-600' : ''
-					}`}
+					} overflow-x-auto`}
 				>
 					{todo.todo}
 				</span>
